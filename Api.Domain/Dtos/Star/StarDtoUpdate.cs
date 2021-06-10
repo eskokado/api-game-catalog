@@ -11,5 +11,6 @@ namespace Api.Domain.Dtos.Star
         public Guid PlayerId { get; set; }
         [Required(ErrorMessage = "Id de Jogo é campo obrigatório")]
         public Guid GameId { get; set; }
+        public int Star { get; set; }
     }
 }

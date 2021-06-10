@@ -8,10 +8,11 @@ namespace Api.Domain.Dtos.Star
     {
         public Guid Id { get; set; }
         public Guid PlayerId { get; set; }
-        public PlayerDtoResult User { get; set; }
+        public PlayerDtoResult Player { get; set; }
 
         public Guid GameId { get; set; }
-        public GameDtoResult Movie { get; set; }
+        public GameDtoResult Game { get; set; }
+        public int Star { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }
     }
