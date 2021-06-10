@@ -7,5 +7,7 @@ namespace Api.Domain.Entities
         public string Name { get; set; }
 
         public string Email { get; set; }
+        public IEnumerable<StarEntity> Stars { get; set; }
+
     }
 }
