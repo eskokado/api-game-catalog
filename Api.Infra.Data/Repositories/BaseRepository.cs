@@ -17,7 +17,6 @@ namespace Api.Infra.Data.Repositories
             _context = context;
             _dataset = _context.Set<T>();
         }
-
         public async Task<T> InsertAsync(T item)
         {
             try
@@ -55,7 +54,6 @@ namespace Api.Infra.Data.Repositories
             }
             return item;
         }
-
         public async Task<bool> DeleteAsync(Guid id)
         {
             try
@@ -78,7 +76,6 @@ namespace Api.Infra.Data.Repositories
         public async Task<bool> ExistAsync (Guid id) {
             return await _dataset.AnyAsync(p => p.Id.Equals(id));
         }
- 
         public async Task<T> SelectAsync(Guid id)
         {
             try
