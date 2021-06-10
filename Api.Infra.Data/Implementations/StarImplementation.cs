@@ -18,6 +18,14 @@ namespace Api.Infra.Data.Implementations
             _dataset = context.Set<StarEntity> ();
         }
 
+        public async Task<IEnumerable<StarEntity>> FindBiggestStar(int amount)
+        {
+            return await _dataset.Include(s => s.Game)
+                                .Include(s => s.Player).AsQueryable()
+                                .OrderByDescending(s => s.Star)
+                                .Take(amount).ToListAsync<StarEntity>();
+        }
+
         public async Task<IEnumerable<StarEntity>> FindCompleteByGameName(string name)
         {
             return await _dataset.Include(s => s.Game)
