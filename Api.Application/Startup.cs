@@ -17,16 +17,30 @@ namespace Api.Application
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment _environment { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            _environment = environment;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (_environment.IsEnvironment("Testing"))
+            {
+                Environment.SetEnvironmentVariable("DB_CONNECTION","Persist Security Info=True;Server=localhost;Port=3306;Database=dbApiGames_Integration;Uid=root;Pwd=root");
+                Environment.SetEnvironmentVariable("DATABASE","MYSQL");
+                // Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database=dbApiGames_Integration;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456");
+                // Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
+                Environment.SetEnvironmentVariable("MIGRATION", "APLICAR");
+                Environment.SetEnvironmentVariable("Audience", "ExampleApiSeriesAudience");
+                Environment.SetEnvironmentVariable("Issuer", "ExampleApiSeriesIssuer");
+                Environment.SetEnvironmentVariable("Seconds", "28880");
+
+            }
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
 
