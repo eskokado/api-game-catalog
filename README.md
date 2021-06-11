@@ -10,8 +10,10 @@ The project's goals is to show that is possible to create an architecture more s
 * Entity Framework
 * SqlServer Connection
 * MySql Connection
+* xUnit
 
 ## Architecture:
 * Layer architecture
 * Domain Driven Design
 * Repository Pattern
+* Test Driven Development (TDD)
